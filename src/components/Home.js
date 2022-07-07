@@ -9,22 +9,28 @@ class Home extends React.Component {
     super();
     this.state = {
       inputSearch: '',
+      inputCategory: '',
       productList: [],
     };
   }
 
   componentDidMount() {
-    console.log(getProductsFromCategoryAndQuery('computador'));
   }
 
   searchProducts = async () => {
-    const { inputSearch } = this.state;
-    const productsList = await getProductsFromCategoryAndQuery('', inputSearch);
+    const { inputSearch, inputCategory } = this.state;
+    const productsList = await
+    getProductsFromCategoryAndQuery(inputCategory, inputSearch);
     this.setState({ productList: productsList.results });
   }
 
   handleChange = (event) => {
-    this.setState({ inputSearch: event.target.value });
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
+  handleChange2 = (event) => {
+    this.setState({ inputCategory: event.target.value },
+      () => this.searchProducts());
   };
 
   render() {
@@ -53,7 +59,7 @@ class Home extends React.Component {
         { productList.length === 0
           ? <p> Nenhum produto foi encontrado </p>
           : <Card results={ productList } />}
-        <CategoriesList />
+        <CategoriesList onClick={ this.handleChange2 } />
         <Link
           to="/cart"
           data-testid="shopping-cart-button"
