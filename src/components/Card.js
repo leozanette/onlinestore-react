@@ -4,13 +4,14 @@ import { Link } from 'react-router-dom';
 
 class Card extends React.Component {
   render() {
-    const { results } = this.props;
+    const { results, addToCart } = this.props;
     return (
       <div>
         { results.map((element) => (
           <div
             data-testid="product"
             key={ element.id }
+
           >
             <span>
               { element.title }
@@ -25,6 +26,18 @@ class Card extends React.Component {
             >
               Details
             </Link>
+            <button
+              type="button"
+              data-testid="product-add-to-cart"
+              onClick={ () => addToCart([{
+                price: element.price,
+                title: element.title,
+                quantity: 1,
+              }]) }
+              price={ element.price }
+            >
+              Add to cart
+            </button>
           </div>
 
         )) }
@@ -36,6 +49,7 @@ class Card extends React.Component {
 
 Card.propTypes = {
   results: PropTypes.arrayOf(PropTypes.object).isRequired,
+  addToCart: PropTypes.func.isRequired,
 };
 
 export default Card;

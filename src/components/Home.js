@@ -11,10 +11,8 @@ class Home extends React.Component {
       inputSearch: '',
       inputCategory: '',
       productList: [],
+      cartItems: [],
     };
-  }
-
-  componentDidMount() {
   }
 
   searchProducts = async () => {
@@ -32,6 +30,14 @@ class Home extends React.Component {
     this.setState({ inputCategory: event.target.id }, // mudado para ID
       () => this.searchProducts());
   };
+
+  addToCart = (event) => {
+    // console.log(event);
+    const { test } = this.props;
+    this.setState((prevState) => ({
+      cartItems: [...prevState.cartItems, ...event] }));
+      test(this.state.cartItems)
+  }
 
   render() {
     const { inputSearch, productList } = this.state;
@@ -58,7 +64,10 @@ class Home extends React.Component {
         </h2>
         { productList.length === 0
           ? <p> Nenhum produto foi encontrado </p>
-          : <Card results={ productList } />}
+          : <Card
+              results={ productList }
+              addToCart={ this.addToCart }
+          />}
         <CategoriesList onClick={ this.rederByCategory } />
         <Link
           to="/cart"
