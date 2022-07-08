@@ -24,12 +24,12 @@ class Home extends React.Component {
     this.setState({ productList: productsList.results });
   }
 
-  handleChange = (event) => {
+  renderBySearch = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleChange2 = (event) => {
-    this.setState({ inputCategory: event.target.value },
+  rederByCategory = (event) => {
+    this.setState({ inputCategory: event.target.id }, // mudado para ID
       () => this.searchProducts());
   };
 
@@ -40,7 +40,7 @@ class Home extends React.Component {
         <input
           type="text"
           data-testid="query-input"
-          onChange={ this.handleChange }
+          onChange={ this.renderBySearch }
           value={ inputSearch }
           name="inputSearch"
         />
@@ -59,7 +59,7 @@ class Home extends React.Component {
         { productList.length === 0
           ? <p> Nenhum produto foi encontrado </p>
           : <Card results={ productList } />}
-        <CategoriesList onClick={ this.handleChange2 } />
+        <CategoriesList onClick={ this.rederByCategory } />
         <Link
           to="/cart"
           data-testid="shopping-cart-button"
