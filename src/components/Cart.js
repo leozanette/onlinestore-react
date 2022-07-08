@@ -4,15 +4,15 @@ import ItemCart from './ItemCart';
 
 class Cart extends React.Component {
   render() {
-    const { cartItems } = this.props;
+    const { result } = this.props;
     return (
       <section>
-        { cartItems.map((item) => (
+        { result.map((item) => (
           <div key={ item.id }>
             <ItemCart
-              name={ item.name }
+              title={ item.title }
               price={ item.price }
-              quantity={ cartItems.length }
+              quantity={ result.length }
             />
           </div>
         )) }
@@ -28,7 +28,7 @@ class Cart extends React.Component {
 }
 
 Cart.propTypes = {
-  cartItems: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  result: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
 export default Cart;

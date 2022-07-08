@@ -6,17 +6,9 @@ class ItemCart extends React.Component {
     const { title, price, quantity } = this.props;
     return (
       <div data-testid="shopping-cart-product-name">
-        <h3>{title}</h3>
-        <p>
-          {' '}
-          R$:
-          {' '}
-          {price}
-        </p>
+        <h3>{ `${title},${price}` }</h3>
         <p data-testid="shopping-cart-product-quantity">
-          Quantidade:
-          {' '}
-          {quantity}
+          { quantity }
         </p>
       </div>
     );

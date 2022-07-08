@@ -9,28 +9,33 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      cartItem: [],
+      result: [],
     };
   }
 
- test = (param) => { console.log(param)}
+  getFromHome = (param) => {
+    const dataCart = param;
+    this.setState((prevState) => ({
+      result: [...prevState.result, ...dataCart],
+    }));
+  }
 
- render() {
-   return (
-     <BrowserRouter>
-       <Switch>
-         <Route
-           path="/"
-           exact
-           render={ (props) => <Home { ...props } test={ this.test } /> }
-         />
-         ;
-         <Route path="/cart" component={ Cart } />
-         <Route path="/product/:id" component={ ProductDetail } />
-       </Switch>
-     </BrowserRouter>
-   );
- }
+  render() {
+    const { result } = this.state;
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" exact>
+            <Home getFromHome={ this.getFromHome } />
+          </Route>
+          <Route path="/cart">
+            <Cart result={ result } />
+          </Route>
+          <Route path="/product/:id" component={ ProductDetail } />
+        </Switch>
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;
