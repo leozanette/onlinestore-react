@@ -4,17 +4,40 @@ import { Link } from 'react-router-dom';
 import ItemCart from './ItemCart';
 
 class Cart extends React.Component {
-  render() {
+  constructor() {
+    super();
+    this.state = {
+      resultCart: [],
+    };
+  }
+
+  componentDidMount() {
     const { result } = this.props;
+    this.setState({ resultCart: result });
+  }
+
+  resultRemoveDup = (resultCart) => {
+    const noMagic = -1;
+    const resultFiltered = [];
+    for (let index = 0; index < resultCart.length; index += 1) {
+      if (resultFiltered.indexOf(resultCart[index]) === noMagic) {
+        resultFiltered.push(resultCart[index]);
+      }
+    }
+    return resultFiltered;
+  }
+
+  render() {
+    const { resultCart } = this.state;
     return (
       <section>
-        { result.map((item) => (
+        { this.resultRemoveDup(resultCart).map((item) => (
           <div key={ item.id }>
             <ItemCart
               title={ item.title }
               price={ item.price }
-              quantity={ result.length }
             />
+
           </div>
         )) }
         <div>
