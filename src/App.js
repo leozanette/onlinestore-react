@@ -6,18 +6,44 @@ import ProductDetail from './components/ProductDetail';
 import Checkout from './components/Checkout';
 import './App.css';
 
-function App() {
-  return (
-    <BrowserRouter>
-      <Switch>
-        <Route path="/" exact component={ Home } />
-        <Route path="/cart" component={ Cart } />
-        <Route path="/product/:id" component={ ProductDetail } />
-        <Route exact path="/checkout" component={ Checkout } />
-      </Switch>
-    </BrowserRouter>
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      result: [],
+    };
+  }
 
-  );
+  getFromHome = (param) => {
+    const dataCart = param;
+    this.setState((prevState) => ({
+      result: [...prevState.result, ...dataCart],
+    }));
+  }
+
+  render() {
+    const { result } = this.state;
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" exact>
+            <Home getFromHome={ this.getFromHome } />
+          </Route>
+          <Route path="/cart">
+            <Cart result={ result } />
+          </Route>
+          <Route
+            path="/product/:id"
+            render={ (props) => (<ProductDetail
+              { ...props }
+              getFromHome={ this.getFromHome }
+            />) }
+          />
+          <Route path="/checkout" component={ Checkout } />
+        </Switch>
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;

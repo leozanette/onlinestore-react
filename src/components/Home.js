@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { getProductsFromCategoryAndQuery } from '../services/api';
 import Card from './Card';
@@ -12,9 +13,6 @@ class Home extends React.Component {
       inputCategory: '',
       productList: [],
     };
-  }
-
-  componentDidMount() {
   }
 
   searchProducts = async () => {
@@ -33,10 +31,22 @@ class Home extends React.Component {
       () => this.searchProducts());
   };
 
+  getData = (param) => {
+    const { getFromHome } = this.props;
+    const dataCart = param;
+    getFromHome(dataCart);
+  }
+
   render() {
     const { inputSearch, productList } = this.state;
     return (
       <>
+        <Link
+          to="/cart"
+          data-testid="shopping-cart-button"
+        >
+          Carrinho
+        </Link>
         <input
           type="text"
           data-testid="query-input"
@@ -58,17 +68,21 @@ class Home extends React.Component {
         </h2>
         { productList.length === 0
           ? <p> Nenhum produto foi encontrado </p>
-          : <Card results={ productList } />}
+          : (
+            <Card
+              results={ productList }
+              getData={ this.getData }
+            />
+          )}
         <CategoriesList onClick={ this.rederByCategory } />
-        <Link
-          to="/cart"
-          data-testid="shopping-cart-button"
-        >
-          Carrinho
-        </Link>
+
       </>
     );
   }
 }
+
+Home.propTypes = {
+  getFromHome: PropTypes.func.isRequired,
+};
 
 export default Home;

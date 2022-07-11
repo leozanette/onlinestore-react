@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { getProductDetail } from '../services/api';
 
 class ProductDetail extends React.Component {
@@ -24,6 +25,7 @@ renderProductDetail = async () => {
   const result = await getProductDetail(currentLocation);
   this.setState({ result });
 }
+
 
 handleChange = (e) => {
   const { target } = e;
@@ -51,6 +53,11 @@ getLocalStorage = () => {
   this.setState({ rating: ratingStorage });
   this.setState({ ratingEmail: emailStorage });
   this.setState({ ratingText: textStorage });
+
+passData = () => {
+  const { getFromHome } = this.props;
+  const { result } = this.state;
+  getFromHome([result]);
 }
 
 render() {
@@ -61,6 +68,18 @@ render() {
         <img src={ result.thumbnail } alt={ result.title } />
         <p data-testid="product-detail-name">{result.title}</p>
         <p>{result.price }</p>
+      <input
+        data-testid="product-detail-add-to-cart"
+        type="button"
+        onClick={ this.passData }
+        id={ result.id }
+      />
+      <Link
+        data-testid="shopping-cart-button"
+        to="/cart"
+      >
+        Cart
+      </Link>
       </div>
       <div>
         <form>
@@ -154,6 +173,7 @@ render() {
 
 ProductDetail.propTypes = {
   location: PropTypes.objectOf(PropTypes.string).isRequired,
+  getFromHome: PropTypes.func.isRequired,
 };
 
 export default ProductDetail;
