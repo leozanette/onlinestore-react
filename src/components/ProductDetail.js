@@ -52,17 +52,18 @@ handleSaveButton = (e) => {
 }
 
 getLocalStorage = () => {
-  const testeLocalStorage = localStorage.getItem('avaliacoes');
+  const avaliationLocalStorage = localStorage.getItem('avaliacoes');
 
-  const parse = JSON.parse(testeLocalStorage);
+  const parse = JSON.parse(avaliationLocalStorage);
 
-  if (testeLocalStorage !== null) {
+  if (avaliationLocalStorage !== null) {
     this.setState({ avaliation: parse });
   }
 }
 
 saveLocalStorage = () => {
-  const teste = JSON.stringify(this.state.avaliation);
+  const { avaliation } = this.state;
+  const teste = JSON.stringify(avaliation);
   localStorage.setItem('avaliacoes', teste);
 }
 
@@ -73,7 +74,7 @@ saveLocalStorage = () => {
   };
 
   render() {
-    const { result, avaliation } = this.state;
+    const { result, avaliation, ratingText, ratingEmail } = this.state;
     return (
       <>
         <div>
@@ -105,7 +106,7 @@ saveLocalStorage = () => {
               placeholder="email"
               name="ratingEmail"
               onChange={ this.handleChange }
-              value={ this.state.ratingEmail }
+              value={ ratingEmail }
             />
             <label htmlFor="rating">
               <input
@@ -157,14 +158,13 @@ saveLocalStorage = () => {
               />
               5
             </label>
-            <input
-              type="textarea"
+            <textarea
               data-testid="product-detail-evaluation"
               placeholder="Escreva sua avaliação"
               maxLength="2000"
               name="ratingText"
               onChange={ this.handleChange }
-              value={ this.state.ratingText }
+              value={ ratingText }
             />
             <button
               type="submit"
@@ -184,14 +184,6 @@ saveLocalStorage = () => {
             ))}
           </div>
         </div>
-        {/* <div>
-          <p>{ rating }</p>
-          <br />
-          <p>{ ratingEmail }</p>
-          <br />
-          <p>{ ratingText }</p>
-          <br />
-        </div> */}
       </>
     );
   }
