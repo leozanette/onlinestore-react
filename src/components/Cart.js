@@ -41,7 +41,6 @@ class Cart extends React.Component {
           </div>
         )) }
         <div>
-
           <h2 data-testid="shopping-cart-empty-message">
             Seu carrinho está vazio
           </h2>
@@ -50,7 +49,6 @@ class Cart extends React.Component {
           to="/checkout"
           data-testid="checkout-products"
         />
-
       </section>
     );
   }
