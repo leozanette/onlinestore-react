@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/onlinestore-react/static/css/main.a1d8f850.chunk.css",
-    "main.js": "/onlinestore-react/static/js/main.f17b98fe.chunk.js",
-    "main.js.map": "/onlinestore-react/static/js/main.f17b98fe.chunk.js.map",
+    "main.js": "/onlinestore-react/static/js/main.bac1d32d.chunk.js",
+    "main.js.map": "/onlinestore-react/static/js/main.bac1d32d.chunk.js.map",
     "runtime-main.js": "/onlinestore-react/static/js/runtime-main.ff73638f.js",
     "runtime-main.js.map": "/onlinestore-react/static/js/runtime-main.ff73638f.js.map",
     "static/js/2.6a9f1312.chunk.js": "/onlinestore-react/static/js/2.6a9f1312.chunk.js",
     "static/js/2.6a9f1312.chunk.js.map": "/onlinestore-react/static/js/2.6a9f1312.chunk.js.map",
     "index.html": "/onlinestore-react/index.html",
-    "precache-manifest.cb233d9a8a6143d3a474d40747403ef8.js": "/onlinestore-react/precache-manifest.cb233d9a8a6143d3a474d40747403ef8.js",
+    "precache-manifest.4e63558474febe62480ab09eb3cc3f9a.js": "/onlinestore-react/precache-manifest.4e63558474febe62480ab09eb3cc3f9a.js",
     "service-worker.js": "/onlinestore-react/service-worker.js",
     "static/css/main.a1d8f850.chunk.css.map": "/onlinestore-react/static/css/main.a1d8f850.chunk.css.map",
     "static/js/2.6a9f1312.chunk.js.LICENSE.txt": "/onlinestore-react/static/js/2.6a9f1312.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.ff73638f.js",
     "static/js/2.6a9f1312.chunk.js",
     "static/css/main.a1d8f850.chunk.css",
-    "static/js/main.f17b98fe.chunk.js"
+    "static/js/main.bac1d32d.chunk.js"
   ]
 }
