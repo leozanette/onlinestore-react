@@ -12,7 +12,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1"
   },
-  "homepage": "https://leozanette.github.io/onlinestore",
+  "homepage": "https://leozanette.github.io/onlinestore-react",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
