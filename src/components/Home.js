@@ -43,7 +43,7 @@ class Home extends React.Component {
       <div className="home">
         <header>
           <Link
-            to="/onlinestore/cart"
+            to="/onlinestore-react/cart"
             data-testid="shopping-cart-button"
           >
             Carrinho
