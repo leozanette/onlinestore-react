@@ -46,7 +46,7 @@ class Cart extends React.Component {
           </h2>
         </div>
         <Link
-          to="/checkout"
+          to="/onlinestore/checkout"
           data-testid="checkout-products"
         />
       </section>

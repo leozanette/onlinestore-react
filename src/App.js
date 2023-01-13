@@ -26,20 +26,20 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route path="/" exact>
+          <Route path="/onlinestore" exact>
             <Home getFromHome={ this.getFromHome } />
           </Route>
-          <Route path="/cart">
+          <Route path="/onlinestore/cart">
             <Cart result={ result } />
           </Route>
           <Route
-            path="/product/:id"
+            path="/onlinestore/product/:id"
             render={ (props) => (<ProductDetail
               { ...props }
               getFromHome={ this.getFromHome }
             />) }
           />
-          <Route path="/checkout" component={ Checkout } />
+          <Route path="/onlinestore/checkout" component={ Checkout } />
         </Switch>
       </BrowserRouter>
     );

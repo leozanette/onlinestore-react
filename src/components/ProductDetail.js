@@ -92,7 +92,7 @@ saveLocalStorage = () => {
 
           <Link
             data-testid="shopping-cart-button"
-            to="/cart"
+            to="/onlinestore/cart"
           >
             Cart
           </Link>

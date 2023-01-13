@@ -28,7 +28,7 @@ class Card extends React.Component {
             </span>
             <Link
               data-testid="product-detail-link"
-              to={ `product/${element.id}` }
+              to={ `/onlinestore/product/${element.id}` }
             >
               Details
             </Link>
