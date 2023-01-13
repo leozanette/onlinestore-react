@@ -40,43 +40,52 @@ class Home extends React.Component {
   render() {
     const { inputSearch, productList } = this.state;
     return (
-      <>
-        <Link
-          to="/cart"
-          data-testid="shopping-cart-button"
-        >
-          Carrinho
-        </Link>
-        <input
-          type="text"
-          data-testid="query-input"
-          onChange={ this.renderBySearch }
-          value={ inputSearch }
-          name="inputSearch"
-        />
-        <button
-          type="button"
-          data-testid="query-button"
-          onClick={ this.searchProducts }
-        >
-          Pesquisar
-        </button>
-        <h2
-          data-testid="home-initial-message"
-        >
-          Digite algum termo de pesquisa ou escolha uma categoria.
-        </h2>
-        { productList.length === 0
-          ? <p> Nenhum produto foi encontrado </p>
-          : (
-            <Card
-              results={ productList }
-              getData={ this.getData }
-            />
-          )}
-        <CategoriesList onClick={ this.rederByCategory } />
+      <div className="home">
+        <header>
+          <Link
+            to="/cart"
+            data-testid="shopping-cart-button"
+          >
+            Carrinho
+          </Link>
+          <input
+            type="text"
+            data-testid="query-input"
+            onChange={ this.renderBySearch }
+            value={ inputSearch }
+            name="inputSearch"
+          />
+          <button
+            type="button"
+            data-testid="query-button"
+            onClick={ this.searchProducts }
+          >
+            Pesquisar
+          </button>
+          <h2
+            data-testid="home-initial-message"
+          >
+            Digite algum termo de pesquisa ou escolha uma categoria.
+          </h2>
 
-      </>
+        </header>
+        <div className="containerCategory">
+          <div className="categorias">
+
+            <CategoriesList onClick={ this.rederByCategory } />
+          </div>
+          <div className="products">
+            { productList.length === 0
+              ? <p> Nenhum produto foi encontrado </p>
+              : (
+                <Card
+                  results={ productList }
+                  getData={ this.getData }
+                />
+              )}
+          </div>
+        </div>
+      </div>
     );
   }
 }
